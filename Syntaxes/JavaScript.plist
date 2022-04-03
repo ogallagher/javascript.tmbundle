@@ -421,9 +421,37 @@
 							<key>comment</key>
 							<string>uncategorized jsdoc keywords/tags in alphabetical order</string>
 							<key>match</key>
-							<string>(?&lt;!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|default[vV]alue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extension[fF]or|external|field|file|file[oO]verview|final|fires|for|function|global|host|ignore|implements|inherit[dD]oc|inner|instance|interface|kind|lends|license|listens|main|member|method|mixex|mixins?|module|name|namespace|no[cC]ollapse|no[sS]ide[eE]ffects|override|overview|package|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|see|since|static|struct|submodule|summary|template|this|todo|TODO|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|write[oO]nce)\b</string>
+							<string>(?&lt;!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|default[vV]alue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extension[fF]or|external|field|file|file[oO]verview|final|fires|for|function|global|host|ignore|implements|inherit[dD]oc|inner|instance|interface|kind|lends|license|listens|main|member|method|mixex|mixins?|module|name|namespace|no[cC]ollapse|no[sS]ide[eE]ffects|override|overview|package|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|see|since|static|struct|submodule|summary|template|this|todo|TODO|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|write[oO]nce)\b</string>
 							<key>name</key>
 							<string>keyword.other.documentation.js.jsdoc</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>jsdoc author phrase</string>
+							<key>name</key>
+							<string>phrase.author.documentation.js.jsdoc</string>
+							
+							<key>match</key>
+							<!-- reference is allowed identifier chars, plus namepath chars .#~ -->
+							<string>(?&lt;keyword&gt;@author)\s+(&lt;(?&lt;url&gt;[^&gt;]+)&gt;)?\s*\(?(?&lt;who&gt;[^\n)]+)\)?</string>
+							<key>captures</key>
+							<dict>
+								<key>keyword</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.author.documentation.js.jsdoc</string>
+								</dict>
+								<key>url</key>
+								<dict>
+									<key>name</key>
+									<string>markup.underline.link.hyperlink.documentation.js.jsdoc</string>
+								</dict>
+								<key>who</key>
+								<dict>
+									<key>name</key>
+									<string>who.author.documentation.js.jsdoc</string>
+								</dict>
+							</dict>
 						</dict>
 						<dict>
 							<key>comment</key>
