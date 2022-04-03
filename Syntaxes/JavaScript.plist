@@ -414,17 +414,127 @@
 					<string>\*/</string>
 					<key>name</key>
 					<string>comment.block.documentation.js</string>
-					<!-- tokens within a comment block -->
+					
 					<key>patterns</key>
 					<array>
 						<dict>
-							<!--
-								jsdoc keywords/tags in alphabetical order
-							-->
+							<key>comment</key>
+							<string>uncategorized jsdoc keywords/tags in alphabetical order</string>
 							<key>match</key>
-							<string>(?&lt;!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|default[vV]alue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extension[fF]or|external|field|file|file[oO]verview|final|fires|for|function|global|host|ignore|implements|inherit[dD]oc|inner|instance|interface|kind|lends|license|link|listens|main|member|member[oO]f|method|mixex|mixins?|module|name|namespace|no[cC]ollapse|no[sS]ide[eE]ffects|override|overview|package|param|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|template|this|throws|todo|TODO|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|write[oO]nce)\b</string>
+							<string>(?&lt;!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|default[vV]alue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extension[fF]or|external|field|file|file[oO]verview|final|fires|for|function|global|host|ignore|implements|inherit[dD]oc|inner|instance|interface|kind|lends|license|listens|main|member|method|mixex|mixins?|module|name|namespace|no[cC]ollapse|no[sS]ide[eE]ffects|override|overview|package|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|see|since|static|struct|submodule|summary|template|this|todo|TODO|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|write[oO]nce)\b</string>
 							<key>name</key>
 							<string>keyword.other.documentation.js.jsdoc</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>jsdoc link phrase</string>
+							<key>match</key>
+							<!-- reference is allowed identifier chars, plus namepath chars .#~ -->
+							<string>\{\s*(?&lt;keyword&gt;@link)\s+(?&lt;reference&gt;[\.#~\w]+)\s*\}</string>
+							<key>captures</key>
+							<dict>
+								<key>keyword</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.memberof.documentation.js.jsdoc</string>
+								</dict>
+								<key>reference</key>
+								<dict>
+									<key>name</key>
+									<string>markup.underline.link.hyperlink.documentation.js.jsdoc</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>phrase.link.documentation.js.jsdoc</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>jsdoc memberof phrase</string>
+							<key>match</key>
+							<string>(@member[oO]f)\s+(\w+)</string>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.memberof.documentation.js.jsdoc</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.type.class.js.documentation.jsdoc</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>phrase.memberof.documentation.js.jsdoc</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>jsdoc param phrase</string>
+							<key>match</key>
+							<string>(?&lt;keyword&gt;@param)\s+(\{\s*\(?\s*(?&lt;types&gt;(?:\w+\|?)+)\s*\)?\s*\})?\s*(?&lt;name&gt;\w+)</string>
+							<key>captures</key>
+							<dict>
+								<key>keyword</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.param.documentation.js.jsdoc</string>
+								</dict>
+								<key>types</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.type.class.js.documentation.jsdoc</string>
+								</dict>
+								<key>name</key>
+								<dict>
+									<key>name</key>
+									<string>variable.parameter.function.js.documentation.jsdoc</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>phrase.param.documentation.js.jsdoc</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>jsdoc returns phrase</string>
+							<key>match</key>
+							<string>(?&lt;keyword&gt;@returns?)\s+(\{\s*\(?\s*(?&lt;types&gt;(?:\w+\|?)+)\s*\)?\s*\})?</string>
+							<key>captures</key>
+							<dict>
+								<key>keyword</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.returns.documentation.js.jsdoc</string>
+								</dict>
+								<key>types</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.type.class.js.documentation.jsdoc</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>phrase.returns.documentation.js.jsdoc</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>jsdoc throws phrase</string>
+							<key>match</key>
+							<string>(@throws)\s+\{\s*\(?\s*((?:\w+\|?)+)\s*\)?\s*\}</string>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.throws.documentation.js.jsdoc</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.type.class.js.documentation.jsdoc</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>phrase.throws.documentation.js.jsdoc</string>
 						</dict>
 					</array>
 				</dict>
