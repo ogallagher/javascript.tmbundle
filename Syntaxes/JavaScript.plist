@@ -564,6 +564,177 @@
 							<key>name</key>
 							<string>phrase.throws.documentation.js.jsdoc</string>
 						</dict>
+						<dict>
+							<key>comment</key>
+							<string>
+								Markdown inline styles (ex. italic, bold, urls).
+							</string>
+							<key>include</key>
+							<string>text.html.markdown#inline</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>
+								Modify heading pattern to allow early *.
+							</string>
+							
+							<key>name</key>
+							<string>markup.heading.${1/(#)(#)?(#)?(#)?(#)?(#)?/${6:?6:${5:?5:${4:?4:${3:?3:${2:?2:1}}}}}/}.markdown</string>
+							
+							<key>begin</key>
+							<string>(?:^|\G)[\s*]*(#{1,6})\s*(?=[\S[^#]])</string>
+							
+							<key>end</key>
+							<string>\s*(#{1,6})?$\n?</string>
+							
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.heading.markdown</string>
+								</dict>
+							</dict>
+							
+							<key>contentName</key>
+							<string>entity.name.section.markdown</string>
+							
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>text.html.markdown#inline</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>
+								Embedded code in markdown with optional named language.
+								Extended with patterns below to allow early * inside jsdoc comment.
+							</string>
+							<key>include</key>
+							<string>text.html.markdown.github</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>
+								Modify embedded javascript code to allow early *.
+							</string>
+							
+							<key>begin</key>
+							<string>(^|\G)[\s*]*([`~]{3})\s*(javascript|js|node)\s*$</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.raw.begin.markdown</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>storage.type.language.markdown</string>
+								</dict>
+							</dict>
+							
+							<key>end</key>
+							<string>(^|\G)[\s*]*(\2)\n?</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.raw.end.markdown</string>
+								</dict>
+							</dict>
+							
+							<key>name</key>
+							<string>markup.raw.block.js</string>
+							
+							<key>patterns</key>
+							<array>								
+								<dict>
+									<key>include</key>
+									<string>source.js</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>
+								Modify embedded json to allow early *.
+							</string>
+							
+							<key>begin</key>
+							<string>(^|\G)[\s*]*([`~]{3})\s*(json)\s*$</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.raw.begin.markdown</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>storage.type.language.markdown</string>
+								</dict>
+							</dict>
+							
+							<key>end</key>
+							<string>(^|\G)[\s*]*(\2)\n?</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.raw.end.markdown</string>
+								</dict>
+							</dict>
+							
+							<key>name</key>
+							<string>markup.raw.block.json</string>
+							
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>source.json</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>
+								Modify embedded code/raw without language name to allow early *.
+							</string>
+							
+							<key>begin</key>
+							<string>(^|\G)[\s*]*([`~]{3})\s*([\w-]*)\s*$</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.raw.begin.markdown</string>
+								</dict>
+							</dict>
+							
+							<key>end</key>
+							<string>(^|\G)[\s*]*(\2)\n?</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.raw.end.markdown</string>
+								</dict>
+							</dict>
+							
+							<key>name</key>
+							<string>markup.raw.block</string>
+						</dict>
 					</array>
 				</dict>
 				<dict>
@@ -3331,6 +3502,7 @@
 							<string>keyword.other.substitution.begin.js</string>
 						</dict>
 					</dict>
+					
 					<key>end</key>
 					<string>}</string>
 					<key>endCaptures</key>
@@ -3341,6 +3513,7 @@
 							<string>keyword.other.substitution.end.js</string>
 						</dict>
 					</dict>
+					
 					<key>patterns</key>
 					<array>
 						<dict>
