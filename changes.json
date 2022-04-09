@@ -2,7 +2,38 @@
 	{
 		"summary": "to do",
 		"details": "Planned features not yet implemented in this version.",
-		"todo": []
+		"todo": [
+			"jsdoc markdown: exclude leading asterisks from embedded code blocks",
+			"jsdoc markdown: exclude leading asterisks from headings",
+			"foldable multiline comments",
+			"fix folding for functions with multiline arguments and uniline `) {`"
+		]
+	},
+	{
+		"summary": "markdown in jsdoc comments",
+		"details": "Use markdown grammar within jsdoc comments."
+	},
+	{
+		"summary": "jsdoc keywords/tags and arguments",
+		"details": "For example, @param uses the format: `@param {types} name description`. param, types, and name are all highlighted."
+	},
+	{
+		"summary": "overhaul",
+		"git": [
+			{
+				"fork": "savetheclocktower",
+				"branch": ""
+			}
+		]
+	}
+	{
+		"summary": "python3 in tidy command",
+		"git": [
+			{
+				"fork": "jacksteele/javascript.tmbundle",
+				"branch": "python3"
+			}
+		]
 	},
 	{
 		"summary": "this file",
